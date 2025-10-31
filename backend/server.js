@@ -31,7 +31,7 @@ db.run(`
   )
 `);
 
-// ================= ROTAS ================= //
+// == ROTAS ==
 
 // Normaliza datas antes de enviar ao front
 function normalizeDate(dateStr) {
@@ -39,7 +39,7 @@ function normalizeDate(dateStr) {
   return dateStr.split('T')[0]; // mantém apenas YYYY-MM-DD
 }
 
-// 1. Listar todas as despesas (CORRIGIDO)
+// 1. Listar todas as despesas 
 app.get('/api/expenses', (req, res) => {
   db.all('SELECT * FROM expenses ORDER BY date DESC', [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -53,7 +53,7 @@ app.get('/api/expenses', (req, res) => {
   });
 });
 
-// 2. Buscar uma despesa por ID (CORRIGIDO)
+// 2. Buscar uma despesa por ID
 app.get('/api/expenses/:id', (req, res) => {
   db.get('SELECT * FROM expenses WHERE id = ?', [req.params.id], (err, row) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -64,7 +64,7 @@ app.get('/api/expenses/:id', (req, res) => {
   });
 });
 
-// 3. Criar nova despesa (CORRIGIDO — garante data sem timezone)
+// 3. Criar nova despesa
 app.post('/api/expenses', (req, res) => {
   const { description, amount, category, date } = req.body;
 
@@ -94,7 +94,7 @@ app.post('/api/expenses', (req, res) => {
   );
 });
 
-// 4. Atualizar despesa (CORRIGIDO)
+// 4. Atualizar despesa 
 app.put('/api/expenses/:id', (req, res) => {
   const { description, amount, category, date } = req.body;
   const normalizedDate = normalizeDate(date);

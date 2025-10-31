@@ -17,7 +17,7 @@ export const expenseService = {
   getAllExpenses: async () => {
     try {
       const response = await api.get('/');
-      return response.data.expenses; // 💥 Agora pega o array certo
+      return response.data.expenses;
     } catch (error) {
       console.error('Erro ao buscar despesas:', error);
       throw error;

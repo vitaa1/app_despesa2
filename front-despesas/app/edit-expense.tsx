@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter, Stack, useLocalSearchParams } from 'expo-router';
-import {expenseService} from '../src/services/api';
+import expenseService from '../src/services/api';
 
 const formatCurrencyInput = (value: string) => {
   const numericValue = value.replace(/\D/g, '');
